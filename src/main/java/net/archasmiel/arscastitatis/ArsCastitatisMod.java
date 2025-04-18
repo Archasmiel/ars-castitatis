@@ -1,5 +1,10 @@
 package net.archasmiel.arscastitatis;
 
+import net.archasmiel.arscastitatis.register.ModBlocks;
+import net.archasmiel.arscastitatis.register.ModItems;
+import net.archasmiel.arscastitatis.register.ModSpells;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.CreativeModeTabs;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -12,16 +17,21 @@ import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
+import net.neoforged.neoforge.registries.NewRegistryEvent;
 
-@Mod(ArsCastitatis.MOD_ID)
-public class ArsCastitatis {
+@Mod(ArsCastitatisMod.MOD_ID)
+public class ArsCastitatisMod {
 
     public static final String MOD_ID = "arscastitatis";
 
-    public ArsCastitatis(IEventBus modEventBus, ModContainer modContainer) {
+    public ArsCastitatisMod(IEventBus modEventBus, ModContainer modContainer) {
         modEventBus.addListener(this::commonSetup);
-
         NeoForge.EVENT_BUS.register(this);
+
+        ModItems.register(modEventBus);
+        ModBlocks.register(modEventBus);
+        ModSpells.register(modEventBus);
+
         modEventBus.addListener(this::addCreative);
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }
@@ -31,7 +41,9 @@ public class ArsCastitatis {
     }
 
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
-
+        if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
+            event.accept(ModBlocks.REINFORCED_DIORITE.get());
+        }
     }
 
     @SubscribeEvent
