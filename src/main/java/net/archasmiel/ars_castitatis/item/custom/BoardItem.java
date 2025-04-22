@@ -1,6 +1,6 @@
-package net.archasmiel.ars_castitatis.item;
+package net.archasmiel.ars_castitatis.item.custom;
 
-import net.archasmiel.ars_castitatis.register.ModBlocks;
+import net.archasmiel.ars_castitatis.block.ModBlocks;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionResult;

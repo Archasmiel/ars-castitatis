@@ -1,4 +1,4 @@
-package net.archasmiel.ars_castitatis.block;
+package net.archasmiel.ars_castitatis.block.custom;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;

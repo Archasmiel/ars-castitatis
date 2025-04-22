@@ -4,6 +4,8 @@ import net.archasmiel.ars_castitatis.spell.Spell;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.entity.AbstractFurnaceBlockEntity;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.registries.NewRegistryEvent;
@@ -25,7 +27,6 @@ public class ModRegistries {
         new RegistryBuilder<>(SPELL_REGISTRY_KEY)
         .defaultKey(SPELL_DEFAULT)
         .create();
-
 
 
     @SubscribeEvent

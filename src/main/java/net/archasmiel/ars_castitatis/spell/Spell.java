@@ -1,5 +1,6 @@
 package net.archasmiel.ars_castitatis.spell;
 
+import net.archasmiel.ars_castitatis.ArsCastitatisMod;
 import net.minecraft.resources.ResourceLocation;
 
 public class Spell {

@@ -1,9 +1,9 @@
 package net.archasmiel.ars_castitatis;
 
-import net.archasmiel.ars_castitatis.register.ModBlocks;
-import net.archasmiel.ars_castitatis.register.ModCreativeModTabs;
-import net.archasmiel.ars_castitatis.register.ModItems;
-import net.archasmiel.ars_castitatis.register.ModSpells;
+import net.archasmiel.ars_castitatis.block.ModBlocks;
+import net.archasmiel.ars_castitatis.item.ModCreativeModTabs;
+import net.archasmiel.ars_castitatis.item.ModItems;
+import net.archasmiel.ars_castitatis.spell.ModSpells;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
