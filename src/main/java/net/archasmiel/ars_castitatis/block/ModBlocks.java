@@ -1,14 +1,17 @@
 package net.archasmiel.ars_castitatis.block;
 
+import com.mojang.datafixers.util.Pair;
 import net.archasmiel.ars_castitatis.ArsCastitatisMod;
 import net.archasmiel.ars_castitatis.block.custom.FuelBlockItem;
 import net.archasmiel.ars_castitatis.block.custom.TeleportBlock;
+import net.archasmiel.ars_castitatis.block.custom.TransformBlock;
 import net.archasmiel.ars_castitatis.item.ModItems;
 import net.archasmiel.ars_castitatis.item.custom.FuelItem;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -16,6 +19,9 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
@@ -35,6 +41,16 @@ public class ModBlocks {
         "paper_block", Block::new,
         (b, p) -> new FuelBlockItem(b, p, 1200),
         Blocks.BAMBOO_PLANKS.properties(), itemProps());
+
+    public static final DeferredHolder<Block, TransformBlock> MAGIC_BRICKS = registerBlock(
+        "magic_bricks",
+        p -> new TransformBlock(p, Map.of(
+            Items.EMERALD, Items.DIAMOND,
+            Items.GOLD_INGOT, Items.IRON_INGOT,
+            Items.COPPER_INGOT, Items.BRICK
+        )),
+        BlockItem::new,
+        Blocks.BRICKS.properties(), itemProps());
 
 
 

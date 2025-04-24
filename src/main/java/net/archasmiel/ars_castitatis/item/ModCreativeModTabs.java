@@ -22,6 +22,8 @@ public class ModCreativeModTabs {
             .withLabelColor(1585395)
             .displayItems((itemDisplayParameters, output) -> {
                 output.accept(ModBlocks.REINFORCED_DIORITE.get());
+                output.accept(ModBlocks.PAPER_BLOCK.get());
+                output.accept(ModBlocks.MAGIC_BRICKS.get());
 
                 output.accept(ModItems.ARDUINO_UNO.get());
                 output.accept(ModItems.BATTERY_LIME.get());

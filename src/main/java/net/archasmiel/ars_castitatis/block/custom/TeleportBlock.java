@@ -2,6 +2,7 @@ package net.archasmiel.ars_castitatis.block.custom;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.Entity;
@@ -23,7 +24,7 @@ public class TeleportBlock extends Block {
     @Override
     public void stepOn(Level level, BlockPos pos, BlockState state, Entity entity) {
 
-        if (!level.isClientSide() && entity instanceof Player player) {
+        if (entity instanceof ServerPlayer player) {
             BlockPos newPos = pos.offset(RANDOM.nextInt(-5, 6), RANDOM.nextInt(1, 6), RANDOM.nextInt(-5, 6));
             player.teleportTo(newPos.getX(), newPos.getY(), newPos.getZ());
 

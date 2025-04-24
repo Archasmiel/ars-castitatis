@@ -1,16 +1,23 @@
 package net.archasmiel.ars_castitatis.item.custom;
 
 import net.archasmiel.ars_castitatis.block.ModBlocks;
+import net.archasmiel.ars_castitatis.tags.ModTags;
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.component.TooltipDisplay;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 
 import java.util.Map;
+import java.util.function.Consumer;
 
 public class BoardItem extends Item {
 
@@ -24,8 +31,7 @@ public class BoardItem extends Item {
     }
 
     @Override
-    public InteractionResult useOn(
-                    UseOnContext context) {
+    public InteractionResult useOn(UseOnContext context) {
         Level level = context.getLevel();
         if (level.isClientSide()) {
             return InteractionResult.PASS;
@@ -39,5 +45,21 @@ public class BoardItem extends Item {
         }
 
         return InteractionResult.PASS;
+    }
+
+    @Override
+    public void appendHoverText(ItemStack item, TooltipContext context,
+                                TooltipDisplay display, Consumer<Component> consumer,
+                                TooltipFlag flag) {
+        String testBoardName = "item.board.arduino.uno.r3.";
+        consumer.accept(
+            Component.translatable(testBoardName + "title")
+                .withStyle(ChatFormatting.UNDERLINE)
+                .withStyle(ChatFormatting.AQUA));
+        consumer.accept(Component.translatable(testBoardName + "type")
+            .withStyle(ChatFormatting.ITALIC)
+            .withStyle(ChatFormatting.WHITE));
+        consumer.accept(Component.translatable(testBoardName + "rev")
+            .withStyle(ChatFormatting.GREEN));
     }
 }
