@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_paper_sheets": {
+      "conditions": {
+        "items": [
+          {
+            "items": "ars_castitatis:paper_sheets"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "ars_castitatis:paper_sheets"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_paper_sheets"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "ars_castitatis:paper_sheets"
+    ]
+  }
+}
