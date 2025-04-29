@@ -1,9 +1,7 @@
 {
-  "replace": false,
   "values": [
     "ars_castitatis:reinforced_diorite",
     "ars_castitatis:paper_block",
     "ars_castitatis:magic_bricks"
-
   ]
 }
