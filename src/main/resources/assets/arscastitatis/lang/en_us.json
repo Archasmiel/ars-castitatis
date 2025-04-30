@@ -1,0 +1,25 @@
+{
+  "creative_tab.arscastitatis.main_tab": "Ars Castitatis",
+
+  "item.arscastitatis.board.arduino_uno.r3.title": "Arduino Uno",
+  "item.arscastitatis.board.arduino_uno.r3.type": "Board",
+  "item.arscastitatis.board.arduino_uno.r3.rev": "Revision R3",
+
+  "item.arscastitatis.reinforced_diorite": "Reinforced Diorite",
+  "item.arscastitatis.arduino_uno": "Arduino Uno",
+  "item.arscastitatis.battery_lime": "Battery Lime",
+  "item.arscastitatis.paper_sheets": "Paper Sheets",
+  "item.arscastitatis.paper_block": "Paper Block",
+  "item.arscastitatis.magic_bricks": "Magic Bricks",
+
+  "item.arscastitatis.plastic_block": "Plastic Block",
+  "item.arscastitatis.plastic_stairs": "Plastic Stairs",
+  "item.arscastitatis.plastic_slab": "Plastic Slab",
+  "item.arscastitatis.plastic_pressure_plate": "Plastic Pressure Plate",
+  "item.arscastitatis.plastic_button": "Plastic Button",
+  "item.arscastitatis.plastic_fence": "Plastic Fence",
+  "item.arscastitatis.plastic_fence_gate": "Plastic Fence Gate",
+  "item.arscastitatis.plastic_wall": "Plastic Wall",
+  "item.arscastitatis.plastic_door": "Plastic Door",
+  "item.arscastitatis.plastic_trapdoor": "Plastic Trapdoor"
+}

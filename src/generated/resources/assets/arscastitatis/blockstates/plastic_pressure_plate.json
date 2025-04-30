@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "powered=false": {
+      "model": "arscastitatis:block/plastic_pressure_plate"
+    },
+    "powered=true": {
+      "model": "arscastitatis:block/plastic_pressure_plate_down"
+    }
+  }
+}

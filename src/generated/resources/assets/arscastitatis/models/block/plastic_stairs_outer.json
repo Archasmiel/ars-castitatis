@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "bottom": "arscastitatis:block/plastic_block",
+    "side": "arscastitatis:block/plastic_block",
+    "top": "arscastitatis:block/plastic_block"
+  }
+}
