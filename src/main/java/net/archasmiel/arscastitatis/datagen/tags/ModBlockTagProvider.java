@@ -1,4 +1,4 @@
-package net.archasmiel.arscastitatis.datagen;
+package net.archasmiel.arscastitatis.datagen.tags;
 
 import java.util.concurrent.CompletableFuture;
 import net.archasmiel.arscastitatis.ArsCastitatisMod;
@@ -6,11 +6,15 @@ import net.archasmiel.arscastitatis.block.ModBlocks;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
-import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 
-/** Mod block tag provider. */
+/**
+ * Mod block tag provider.
+ *
+ * <p>Generates block tags for the mod.
+ */
 public class ModBlockTagProvider extends BlockTagsProvider {
 
   /**
@@ -20,8 +24,10 @@ public class ModBlockTagProvider extends BlockTagsProvider {
    * @param lookupProvider provider from {@link GatherDataEvent}
    */
   public ModBlockTagProvider(
-      PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider) {
-    super(output, lookupProvider, ArsCastitatisMod.MOD_ID);
+      PackOutput output,
+      CompletableFuture<HolderLookup.Provider> lookupProvider,
+      ExistingFileHelper helper) {
+    super(output, lookupProvider, ArsCastitatisMod.MOD_ID, helper);
   }
 
   @Override

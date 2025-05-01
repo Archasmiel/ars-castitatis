@@ -53,7 +53,7 @@ public class TransformationBlock extends Block {
         ItemStack stack = itemEntity.getItem();
         Item itemTo = transforms.get(stack.getItem());
         itemEntity.setItem(new ItemStack(itemTo, stack.getCount()));
-        level.playSound(entity, pos, SoundEvents.BLAZE_SHOOT, SoundSource.BLOCKS);
+        level.playSound(null, pos, SoundEvents.BLAZE_SHOOT, SoundSource.BLOCKS);
       }
     }
   }

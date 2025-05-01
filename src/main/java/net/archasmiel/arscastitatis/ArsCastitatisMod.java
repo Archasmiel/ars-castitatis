@@ -1,6 +1,8 @@
 package net.archasmiel.arscastitatis;
 
+import com.mojang.logging.LogUtils;
 import net.archasmiel.arscastitatis.block.ModBlocks;
+import net.archasmiel.arscastitatis.effects.ModEffects;
 import net.archasmiel.arscastitatis.item.ModCreativeModTabs;
 import net.archasmiel.arscastitatis.item.ModItems;
 import net.archasmiel.arscastitatis.spell.ModSpells;
@@ -17,18 +19,20 @@ import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
+import org.slf4j.Logger;
 
 @Mod(ArsCastitatisMod.MOD_ID)
 public class ArsCastitatisMod {
 
   public static final String MOD_ID = "arscastitatis";
+  public static final Logger LOGGER = LogUtils.getLogger();
 
   public ArsCastitatisMod(IEventBus modEventBus, ModContainer modContainer) {
     modEventBus.addListener(this::commonSetup);
     NeoForge.EVENT_BUS.register(this);
 
     ModCreativeModTabs.register(modEventBus);
-
+    ModEffects.register(modEventBus);
     ModItems.register(modEventBus);
     ModBlocks.register(modEventBus);
     ModSpells.register(modEventBus);

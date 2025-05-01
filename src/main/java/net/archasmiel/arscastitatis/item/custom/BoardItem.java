@@ -1,7 +1,7 @@
 package net.archasmiel.arscastitatis.item.custom;
 
+import java.util.List;
 import java.util.Map;
-import java.util.function.Consumer;
 import net.archasmiel.arscastitatis.block.ModBlocks;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
@@ -11,7 +11,6 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.item.component.TooltipDisplay;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -55,20 +54,27 @@ public class BoardItem extends Item {
 
   @Override
   public void appendHoverText(
-      ItemStack item,
+      ItemStack stack,
       TooltipContext context,
-      TooltipDisplay display,
-      Consumer<Component> consumer,
-      TooltipFlag flag) {
-    String testBoardName = "item.arscastitatis.board.arduino_uno.r3.";
-    consumer.accept(
-        Component.translatable(testBoardName + "title")
-            .withStyle(ChatFormatting.UNDERLINE)
-            .withStyle(ChatFormatting.AQUA));
-    consumer.accept(
-        Component.translatable(testBoardName + "type")
-            .withStyle(ChatFormatting.ITALIC)
-            .withStyle(ChatFormatting.WHITE));
-    consumer.accept(Component.translatable(testBoardName + "rev").withStyle(ChatFormatting.GREEN));
+      List<Component> tooltipComponents,
+      TooltipFlag tooltipFlag) {
+    if (tooltipFlag.hasShiftDown()) {
+      String testBoardName = "tooltip.arscastitatis.board.arduino_uno.r3.";
+      tooltipComponents.add(
+          Component.translatable(testBoardName + "title")
+              .withStyle(ChatFormatting.UNDERLINE)
+              .withStyle(ChatFormatting.AQUA));
+      tooltipComponents.add(
+          Component.translatable(testBoardName + "type")
+              .withStyle(ChatFormatting.ITALIC)
+              .withStyle(ChatFormatting.WHITE));
+      tooltipComponents.add(
+          Component.translatable(testBoardName + "rev").withStyle(ChatFormatting.GREEN));
+    }
+    else {
+      String show = "tooltip.arscastitatis.board.show_tooltip";
+      tooltipComponents.add(
+          Component.translatable(show).withStyle(ChatFormatting.GOLD));
+    }
   }
 }

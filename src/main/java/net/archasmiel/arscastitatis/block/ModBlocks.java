@@ -5,16 +5,27 @@ import java.util.function.BiFunction;
 import java.util.function.Function;
 import net.archasmiel.arscastitatis.ArsCastitatisMod;
 import net.archasmiel.arscastitatis.block.custom.FuelBlockItem;
+import net.archasmiel.arscastitatis.block.custom.LedLampBlock;
 import net.archasmiel.arscastitatis.block.custom.TeleportBlock;
 import net.archasmiel.arscastitatis.block.custom.TransformationBlock;
 import net.archasmiel.arscastitatis.item.ModItems;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.ButtonBlock;
+import net.minecraft.world.level.block.DoorBlock;
+import net.minecraft.world.level.block.FenceBlock;
+import net.minecraft.world.level.block.FenceGateBlock;
+import net.minecraft.world.level.block.PressurePlateBlock;
+import net.minecraft.world.level.block.SlabBlock;
+import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.StairBlock;
+import net.minecraft.world.level.block.TrapDoorBlock;
+import net.minecraft.world.level.block.WallBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.WoodType;
@@ -31,7 +42,6 @@ public class ModBlocks {
   public static final DeferredHolder<Block, TeleportBlock> REINFORCED_DIORITE;
   public static final DeferredHolder<Block, Block> PAPER_BLOCK;
   public static final DeferredHolder<Block, TransformationBlock> MAGIC_BRICKS;
-
   public static final DeferredHolder<Block, Block> PLASTIC_BLOCK;
   public static final DeferredHolder<Block, StairBlock> PLASTIC_STAIRS;
   public static final DeferredHolder<Block, SlabBlock> PLASTIC_SLAB;
@@ -42,6 +52,7 @@ public class ModBlocks {
   public static final DeferredHolder<Block, WallBlock> PLASTIC_WALL;
   public static final DeferredHolder<Block, DoorBlock> PLASTIC_DOOR;
   public static final DeferredHolder<Block, TrapDoorBlock> PLASTIC_TRAPDOOR;
+  public static final DeferredHolder<Block, LedLampBlock> LED_LAMP;
 
   /**
    * Registers a block along with its corresponding block item in the mod registry.
@@ -65,10 +76,7 @@ public class ModBlocks {
       BlockBehaviour.Properties blockProps,
       Item.Properties itemProps) {
 
-    var block =
-        BLOCKS.register(
-            name,
-            key -> blockFunc.apply(blockProps.setId(ResourceKey.create(Registries.BLOCK, key))));
+    var block = BLOCKS.register(name, key -> blockFunc.apply(blockProps));
     ModItems.registerBlockItem(name, blockItemFunc, block, itemProps);
     return block;
   }
@@ -205,6 +213,17 @@ public class ModBlocks {
                 .requiresCorrectToolForDrops()
                 .noOcclusion(),
             new Item.Properties());
+
+    LED_LAMP =
+        registerBlock(
+            "led_lamp",
+            props -> new LedLampBlock(props, 15),
+            BlockItem::new,
+            BlockBehaviour.Properties.of()
+                .strength(2f)
+                .sound(SoundType.GLASS)
+                .requiresCorrectToolForDrops(),
+            new Item.Properties());
   }
 
   /**
@@ -229,6 +248,8 @@ public class ModBlocks {
     output.accept(ModBlocks.PLASTIC_FENCE_GATE.get());
     output.accept(ModBlocks.PLASTIC_WALL.get());
     output.accept(ModBlocks.PLASTIC_DOOR.get());
+
+    output.accept(ModBlocks.LED_LAMP.get());
   }
 
   /**

@@ -3,11 +3,10 @@ package net.archasmiel.arscastitatis.item;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 import net.archasmiel.arscastitatis.ArsCastitatisMod;
+import net.archasmiel.arscastitatis.effects.ModFoodProperties;
 import net.archasmiel.arscastitatis.item.custom.BoardItem;
 import net.archasmiel.arscastitatis.item.custom.FuelItem;
-import net.archasmiel.arscastitatis.item.foodproperties.ModFoodProperties;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
@@ -39,10 +38,7 @@ public class ModItems {
   public static <T extends Item> DeferredHolder<Item, T> registerItem(
       String name, Function<Item.Properties, T> itemFunction, Item.Properties properties) {
 
-    return ITEMS.register(
-        name,
-        regName ->
-            itemFunction.apply(properties.setId(ResourceKey.create(Registries.ITEM, regName))));
+    return ITEMS.register(name, regName -> itemFunction.apply(properties));
   }
 
   /**
@@ -62,11 +58,7 @@ public class ModItems {
       DeferredHolder<Block, T> block,
       Item.Properties properties) {
 
-    ITEMS.register(
-        name,
-        regName ->
-            blockItemFunction.apply(
-                block.get(), properties.setId(ResourceKey.create(Registries.ITEM, regName))));
+    ITEMS.register(name, regName -> blockItemFunction.apply(block.get(), properties));
   }
 
   static {
@@ -75,9 +67,7 @@ public class ModItems {
         registerItem(
             "battery_lime",
             Item::new,
-            new Item.Properties()
-                .stacksTo(4)
-                .food(ModFoodProperties.BATTERY_FOOD, ModFoodProperties.BATTERY_CONSUMABLE));
+            new Item.Properties().stacksTo(1).food(ModFoodProperties.BATTERY_FOOD));
     PAPER_SHEETS = registerItem("paper_sheets", p -> new FuelItem(p, 200), new Item.Properties());
   }
 

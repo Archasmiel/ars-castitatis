@@ -5,7 +5,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.entity.FuelValues;
 import org.jetbrains.annotations.Nullable;
 
 /** Class representing block item with fuel burn time. */
@@ -26,8 +25,7 @@ public class FuelBlockItem extends BlockItem {
   }
 
   @Override
-  public int getBurnTime(
-      ItemStack itemStack, @Nullable RecipeType<?> recipeType, FuelValues fuelValues) {
+  public int getBurnTime(ItemStack itemStack, @Nullable RecipeType<?> recipeType) {
     return burnTime;
   }
 }

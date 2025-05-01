@@ -3,7 +3,6 @@ package net.archasmiel.arscastitatis.item.custom;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeType;
-import net.minecraft.world.level.block.entity.FuelValues;
 import org.jetbrains.annotations.Nullable;
 
 /** Class representing item with fuel burn time. */
@@ -23,8 +22,7 @@ public class FuelItem extends Item {
   }
 
   @Override
-  public int getBurnTime(
-      ItemStack itemStack, @Nullable RecipeType<?> recipeType, FuelValues fuelValues) {
+  public int getBurnTime(ItemStack itemStack, @Nullable RecipeType<?> recipeType) {
     return burnTime;
   }
 }

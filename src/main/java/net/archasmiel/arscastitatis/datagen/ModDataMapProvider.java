@@ -6,7 +6,11 @@ import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.common.data.DataMapProvider;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 
-/** Mod data map provider class. */
+/**
+ * Mod data map provider class.
+ *
+ * <p>Generates data maps for the mod.
+ */
 public class ModDataMapProvider extends DataMapProvider {
 
   /**
