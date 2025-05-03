@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "color=0": {
+      "model": "arscastitatis:block/rgb_lamp_0"
+    },
+    "color=1": {
+      "model": "arscastitatis:block/rgb_lamp_1"
+    },
+    "color=2": {
+      "model": "arscastitatis:block/rgb_lamp_2"
+    },
+    "color=3": {
+      "model": "arscastitatis:block/rgb_lamp_3"
+    }
+  }
+}

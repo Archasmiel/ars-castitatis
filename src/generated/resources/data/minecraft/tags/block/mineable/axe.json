@@ -1,8 +1,5 @@
 {
   "values": [
-    "arscastitatis:reinforced_diorite",
-    "arscastitatis:paper_block",
-    "arscastitatis:magic_bricks",
     "arscastitatis:plastic_block",
     "arscastitatis:plastic_stairs",
     "arscastitatis:plastic_slab",
@@ -12,8 +9,6 @@
     "arscastitatis:plastic_fence_gate",
     "arscastitatis:plastic_wall",
     "arscastitatis:plastic_door",
-    "arscastitatis:plastic_trapdoor",
-    "arscastitatis:led_lamp",
-    "arscastitatis:rgb_lamp"
+    "arscastitatis:plastic_trapdoor"
   ]
 }

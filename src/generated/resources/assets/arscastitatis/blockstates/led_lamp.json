@@ -1,10 +1,10 @@
 {
   "variants": {
-    "clicked=false": {
-      "model": "arscastitatis:block/led_lamp_off"
+    "state=0": {
+      "model": "arscastitatis:block/led_lamp_0"
     },
-    "clicked=true": {
-      "model": "arscastitatis:block/led_lamp_on"
+    "state=1": {
+      "model": "arscastitatis:block/led_lamp_1"
     }
   }
 }

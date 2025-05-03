@@ -3,9 +3,11 @@ package net.archasmiel.arscastitatis.datagen.models;
 import net.archasmiel.arscastitatis.ArsCastitatisMod;
 import net.archasmiel.arscastitatis.block.ModBlocks;
 import net.archasmiel.arscastitatis.block.custom.LedLampBlock;
+import net.archasmiel.arscastitatis.block.custom.RgbLampBlock;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
 import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
@@ -60,7 +62,8 @@ public class ModBlockStateProvider extends BlockStateProvider {
     blockItem(ModBlocks.PLASTIC_FENCE_GATE);
     blockItem(ModBlocks.PLASTIC_TRAPDOOR, "_bottom");
 
-    customLamp(ModBlocks.LED_LAMP);
+    multiStateLamp(ModBlocks.LED_LAMP, LedLampBlock.STATE);
+    multiStateLamp(ModBlocks.RGB_LAMP, RgbLampBlock.STATE);
   }
 
   private void blockWithItem(DeferredHolder<Block, ? extends Block> blockHolder) {
@@ -80,27 +83,27 @@ public class ModBlockStateProvider extends BlockStateProvider {
     simpleBlockItem(blockHolder.get(), new ModelFile.UncheckedModelFile(location));
   }
 
-  private void customLamp(DeferredHolder<Block, ? extends Block> blockHolder) {
+  private void multiStateLamp(
+      DeferredHolder<Block, ? extends Block> blockHolder, IntegerProperty property) {
     String path = blockHolder.getId().getPath();
-    String onName = "%s_on".formatted(path);
-    String offName = "%s_off".formatted(path);
-    ResourceLocation onTextureLoc =
-        ResourceLocation.fromNamespaceAndPath(
-            ArsCastitatisMod.MOD_ID, "block/%s_on".formatted(path));
-    ResourceLocation offTextureLoc =
-        ResourceLocation.fromNamespaceAndPath(
-            ArsCastitatisMod.MOD_ID, "block/%s_off".formatted(path));
 
     getVariantBuilder(blockHolder.get())
         .forAllStates(
             state -> {
-              Boolean value = state.getValue(LedLampBlock.CLICKED);
-              String name = value ? onName : offName;
-              ResourceLocation textureLoc = value ? onTextureLoc : offTextureLoc;
+              int value = state.getValue(property);
+              String name = "%s_%s".formatted(path, value);
+              ResourceLocation textureLoc =
+                  ResourceLocation.fromNamespaceAndPath(
+                      ArsCastitatisMod.MOD_ID, "block/%s_%s".formatted(path, value));
               return new ConfiguredModel[] {
                 new ConfiguredModel(models().cubeAll(name, textureLoc))
               };
             });
-    simpleBlockItem(blockHolder.get(), models().cubeAll(onName, onTextureLoc));
+
+    String state0 = "%s_0".formatted(path);
+    ResourceLocation textureLoc0 =
+        ResourceLocation.fromNamespaceAndPath(
+            ArsCastitatisMod.MOD_ID, "block/%s_0".formatted(path));
+    simpleBlockItem(blockHolder.get(), models().cubeAll(state0, textureLoc0));
   }
 }

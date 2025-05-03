@@ -10,28 +10,32 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition.Builder;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.phys.BlockHitResult;
 
-/**
- * Class representing LED lamp block.
- *
- * <p>LED lamp block is a block that can be clicked to toggle its light level.
- */
-public class LedLampBlock extends Block {
+/** Class representing RGB lamp block. */
+public class RgbLampBlock extends Block {
 
-  public static final IntegerProperty STATE = IntegerProperty.create("state", 0, 1);
+  public static final IntegerProperty STATE = IntegerProperty.create("color", 0, 3);
 
   /**
-   * Constructor for LED lamp block.
+   * Constructor for RGB lamp block.
    *
    * @param properties the properties of the block, lightLevel is already included
-   * @param lightLevel the light level to be emitted when clicked
    */
-  public LedLampBlock(BlockBehaviour.Properties properties, int lightLevel) {
-    super(properties.lightLevel(state -> state.getValue(STATE) == 1 ? lightLevel : 0));
-    this.registerDefaultState(this.defaultBlockState().setValue(STATE, 0));
+  public RgbLampBlock(BlockBehaviour.Properties properties) {
+    super(
+        properties
+            .lightLevel(state -> state.getValue(STATE) > 0 ? 15 : 0)
+            .mapColor(
+                blockState -> switch (blockState.getValue(STATE)) {
+                  case 0 -> MapColor.COLOR_GRAY;
+                  case 1 -> MapColor.COLOR_RED;
+                  case 2 -> MapColor.COLOR_GREEN;
+                  case 3 -> MapColor.COLOR_BLUE;
+                  default -> MapColor.COLOR_BLACK;
+                }));
   }
 
   @Override
@@ -41,9 +45,9 @@ public class LedLampBlock extends Block {
       return InteractionResult.FAIL;
     }
 
-    int currentState = state.getValue(STATE);
-    int newState = (currentState + 1) % 2; // Cycle through colors 0, 1, 2
-    level.setBlockAndUpdate(pos, state.setValue(STATE, newState));
+    int currentColor = state.getValue(STATE);
+    int newColor = (currentColor + 1) % 4; // Cycle through colors 0, 1, 2
+    level.setBlockAndUpdate(pos, state.setValue(STATE, newColor));
     level.playSound(null, pos, SoundEvents.ITEM_PICKUP, SoundSource.BLOCKS);
 
     return InteractionResult.SUCCESS;

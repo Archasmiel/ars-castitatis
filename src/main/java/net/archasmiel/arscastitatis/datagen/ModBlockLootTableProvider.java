@@ -52,6 +52,7 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
     add(ModBlocks.PLASTIC_DOOR.get(), block -> createDoorTable(ModBlocks.PLASTIC_DOOR.get()));
 
     dropSelf(ModBlocks.LED_LAMP.get());
+    dropSelf(ModBlocks.RGB_LAMP.get());
   }
 
   /**

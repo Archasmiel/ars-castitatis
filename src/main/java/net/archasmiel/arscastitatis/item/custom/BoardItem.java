@@ -3,7 +3,9 @@ package net.archasmiel.arscastitatis.item.custom;
 import java.util.List;
 import java.util.Map;
 import net.archasmiel.arscastitatis.block.ModBlocks;
+import net.archasmiel.arscastitatis.component.ModDataComponents;
 import net.minecraft.ChatFormatting;
+import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -39,11 +41,12 @@ public class BoardItem extends Item {
   public InteractionResult useOn(UseOnContext context) {
     Level level = context.getLevel();
     if (level.isClientSide()) {
-      return InteractionResult.PASS;
+      return InteractionResult.FAIL;
     }
 
     Block block = level.getBlockState(context.getClickedPos()).getBlock();
     if (MAPPER.containsKey(block)) {
+      context.getItemInHand().set(ModDataComponents.COORDINATES, context.getClickedPos());
       level.setBlockAndUpdate(context.getClickedPos(), MAPPER.get(block).defaultBlockState());
       level.playSound(null, context.getClickedPos(), SoundEvents.ANVIL_LAND, SoundSource.BLOCKS);
       return InteractionResult.SUCCESS;
@@ -70,11 +73,16 @@ public class BoardItem extends Item {
               .withStyle(ChatFormatting.WHITE));
       tooltipComponents.add(
           Component.translatable(testBoardName + "rev").withStyle(ChatFormatting.GREEN));
-    }
-    else {
-      String show = "tooltip.arscastitatis.board.show_tooltip";
+    } else if (tooltipFlag.hasControlDown()) {
+      BlockPos pos = stack.get(ModDataComponents.COORDINATES);
+      String show = "tooltip.arscastitatis.board.last_click";
+      tooltipComponents.add(Component.translatable(show).withStyle(ChatFormatting.AQUA));
       tooltipComponents.add(
-          Component.translatable(show).withStyle(ChatFormatting.GOLD));
+          Component.literal(pos == null ? "null" : pos.toString()).withStyle(ChatFormatting.BOLD));
+    } else {
+      String show = "tooltip.arscastitatis.board.show_tooltip";
+      tooltipComponents.add(Component.translatable(show + "1").withStyle(ChatFormatting.GOLD));
+      tooltipComponents.add(Component.translatable(show + "2").withStyle(ChatFormatting.GOLD));
     }
   }
 }

@@ -1,7 +1,9 @@
 {
   "creative_tab.arscastitatis.main_tab": "Ars Castitatis",
 
-  "tooltip.arscastitatis.board.show_tooltip": "Hold Shift for more information",
+  "tooltip.arscastitatis.board.show_tooltip1": "Hold Shift for more information",
+  "tooltip.arscastitatis.board.show_tooltip2": "Hold Ctrl for last BlockPos",
+  "tooltip.arscastitatis.board.last_click": "Last click at:",
   "tooltip.arscastitatis.board.arduino_uno.r3.title": "Arduino Uno",
   "tooltip.arscastitatis.board.arduino_uno.r3.type": "Board",
   "tooltip.arscastitatis.board.arduino_uno.r3.rev": "Revision R3",
@@ -23,5 +25,6 @@
   "block.arscastitatis.plastic_wall": "Plastic Wall",
   "block.arscastitatis.plastic_door": "Plastic Door",
   "block.arscastitatis.plastic_trapdoor": "Plastic Trapdoor",
-  "block.arscastitatis.led_lamp": "LED Lamp"
+  "block.arscastitatis.led_lamp": "LED Lamp",
+  "block.arscastitatis.rgb_lamp": "RGB Lamp"
 }

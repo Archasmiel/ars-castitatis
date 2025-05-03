@@ -2,6 +2,7 @@ package net.archasmiel.arscastitatis;
 
 import com.mojang.logging.LogUtils;
 import net.archasmiel.arscastitatis.block.ModBlocks;
+import net.archasmiel.arscastitatis.component.ModDataComponents;
 import net.archasmiel.arscastitatis.effects.ModEffects;
 import net.archasmiel.arscastitatis.item.ModCreativeModTabs;
 import net.archasmiel.arscastitatis.item.ModItems;
@@ -36,6 +37,8 @@ public class ArsCastitatisMod {
     ModItems.register(modEventBus);
     ModBlocks.register(modEventBus);
     ModSpells.register(modEventBus);
+
+    ModDataComponents.register(modEventBus);
 
     modEventBus.addListener(this::addCreative);
     modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);

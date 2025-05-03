@@ -1,11 +1,16 @@
 package net.archasmiel.arscastitatis.block;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 import net.archasmiel.arscastitatis.ArsCastitatisMod;
 import net.archasmiel.arscastitatis.block.custom.FuelBlockItem;
 import net.archasmiel.arscastitatis.block.custom.LedLampBlock;
+import net.archasmiel.arscastitatis.block.custom.RgbLampBlock;
 import net.archasmiel.arscastitatis.block.custom.TeleportBlock;
 import net.archasmiel.arscastitatis.block.custom.TransformationBlock;
 import net.archasmiel.arscastitatis.item.ModItems;
@@ -39,6 +44,15 @@ public class ModBlocks {
   public static final DeferredRegister<Block> BLOCKS =
       DeferredRegister.create(Registries.BLOCK, ArsCastitatisMod.MOD_ID);
 
+  public static final List<Block> PICKAXE_MINEABLE = new ArrayList<>();
+  public static final List<Block> AXE_MINEABLE = new ArrayList<>();
+  public static final List<Block> SHOVEL_MINEABLE = new ArrayList<>();
+  public static final List<Block> HOE_MINEABLE = new ArrayList<>();
+
+  public static final List<Block> DIAMOND_PICKAXE = new ArrayList<>();
+  public static final List<Block> IRON_PICKAXE = new ArrayList<>();
+  public static final List<Block> STONE_PICKAXE = new ArrayList<>();
+
   public static final DeferredHolder<Block, TeleportBlock> REINFORCED_DIORITE;
   public static final DeferredHolder<Block, Block> PAPER_BLOCK;
   public static final DeferredHolder<Block, TransformationBlock> MAGIC_BRICKS;
@@ -53,6 +67,7 @@ public class ModBlocks {
   public static final DeferredHolder<Block, DoorBlock> PLASTIC_DOOR;
   public static final DeferredHolder<Block, TrapDoorBlock> PLASTIC_TRAPDOOR;
   public static final DeferredHolder<Block, LedLampBlock> LED_LAMP;
+  public static final DeferredHolder<Block, RgbLampBlock> RGB_LAMP;
 
   /**
    * Registers a block along with its corresponding block item in the mod registry.
@@ -224,6 +239,16 @@ public class ModBlocks {
                 .sound(SoundType.GLASS)
                 .requiresCorrectToolForDrops(),
             new Item.Properties());
+    RGB_LAMP =
+        registerBlock(
+            "rgb_lamp",
+            RgbLampBlock::new,
+            BlockItem::new,
+            BlockBehaviour.Properties.of()
+                .strength(2f)
+                .sound(SoundType.GLASS)
+                .requiresCorrectToolForDrops(),
+            new Item.Properties());
   }
 
   /**
@@ -250,6 +275,7 @@ public class ModBlocks {
     output.accept(ModBlocks.PLASTIC_DOOR.get());
 
     output.accept(ModBlocks.LED_LAMP.get());
+    output.accept(ModBlocks.RGB_LAMP.get());
   }
 
   /**

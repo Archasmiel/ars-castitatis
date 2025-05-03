@@ -5,7 +5,10 @@ import net.archasmiel.arscastitatis.ArsCastitatisMod;
 import net.archasmiel.arscastitatis.block.ModBlocks;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
+import net.minecraft.data.tags.IntrinsicHolderTagsProvider;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.world.level.block.Block;
+import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
@@ -36,7 +39,32 @@ public class ModBlockTagProvider extends BlockTagsProvider {
         .replace(false)
         .add(ModBlocks.REINFORCED_DIORITE.get())
         .add(ModBlocks.PAPER_BLOCK.get())
-        .add(ModBlocks.MAGIC_BRICKS.get());
+        .add(ModBlocks.MAGIC_BRICKS.get())
+        .add(ModBlocks.PLASTIC_BLOCK.get())
+        .add(ModBlocks.PLASTIC_STAIRS.get())
+        .add(ModBlocks.PLASTIC_SLAB.get())
+        .add(ModBlocks.PLASTIC_PRESSURE_PLATE.get())
+        .add(ModBlocks.PLASTIC_BUTTON.get())
+        .add(ModBlocks.PLASTIC_FENCE.get())
+        .add(ModBlocks.PLASTIC_FENCE_GATE.get())
+        .add(ModBlocks.PLASTIC_WALL.get())
+        .add(ModBlocks.PLASTIC_DOOR.get())
+        .add(ModBlocks.PLASTIC_TRAPDOOR.get())
+        .add(ModBlocks.LED_LAMP.get())
+        .add(ModBlocks.RGB_LAMP.get());
+
+    tag(BlockTags.MINEABLE_WITH_AXE)
+        .replace(false)
+        .add(ModBlocks.PLASTIC_BLOCK.get())
+        .add(ModBlocks.PLASTIC_STAIRS.get())
+        .add(ModBlocks.PLASTIC_SLAB.get())
+        .add(ModBlocks.PLASTIC_PRESSURE_PLATE.get())
+        .add(ModBlocks.PLASTIC_BUTTON.get())
+        .add(ModBlocks.PLASTIC_FENCE.get())
+        .add(ModBlocks.PLASTIC_FENCE_GATE.get())
+        .add(ModBlocks.PLASTIC_WALL.get())
+        .add(ModBlocks.PLASTIC_DOOR.get())
+        .add(ModBlocks.PLASTIC_TRAPDOOR.get());
 
     tag(BlockTags.NEEDS_DIAMOND_TOOL).replace(false).add(ModBlocks.REINFORCED_DIORITE.get());
 
@@ -44,6 +72,21 @@ public class ModBlockTagProvider extends BlockTagsProvider {
         .replace(false)
         .add(ModBlocks.PAPER_BLOCK.get())
         .add(ModBlocks.MAGIC_BRICKS.get());
+
+    tag(BlockTags.NEEDS_STONE_TOOL)
+        .replace(false)
+        .add(ModBlocks.PLASTIC_BLOCK.get())
+        .add(ModBlocks.PLASTIC_STAIRS.get())
+        .add(ModBlocks.PLASTIC_SLAB.get())
+        .add(ModBlocks.PLASTIC_PRESSURE_PLATE.get())
+        .add(ModBlocks.PLASTIC_BUTTON.get())
+        .add(ModBlocks.PLASTIC_FENCE.get())
+        .add(ModBlocks.PLASTIC_FENCE_GATE.get())
+        .add(ModBlocks.PLASTIC_WALL.get())
+        .add(ModBlocks.PLASTIC_DOOR.get())
+        .add(ModBlocks.PLASTIC_TRAPDOOR.get())
+        .add(ModBlocks.LED_LAMP.get())
+        .add(ModBlocks.RGB_LAMP.get());
 
     tag(BlockTags.STAIRS).add(ModBlocks.PLASTIC_STAIRS.get());
     tag(BlockTags.SLABS).add(ModBlocks.PLASTIC_SLAB.get());
