@@ -22,12 +22,16 @@ import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import org.slf4j.Logger;
 
+/** Ars Castitatis mod main class. */
 @Mod(ArsCastitatisMod.MOD_ID)
 public class ArsCastitatisMod {
 
+  /** Mod ID). */
   public static final String MOD_ID = "arscastitatis";
+
   public static final Logger LOGGER = LogUtils.getLogger();
 
+  /** Mod configuration. */
   public ArsCastitatisMod(IEventBus modEventBus, ModContainer modContainer) {
     modEventBus.addListener(this::commonSetup);
     NeoForge.EVENT_BUS.register(this);
@@ -52,13 +56,23 @@ public class ArsCastitatisMod {
     }
   }
 
+  /**
+   * Server starting event.
+   */
   @SubscribeEvent
-  public void onServerStarting(ServerStartingEvent event) {}
+  public void onServerStarting(ServerStartingEvent event) {
+    LOGGER.info("NPCs enabled: {}", event.getServer().areNpcsEnabled());
+  }
 
+
+  /** Client mod events. */
   @EventBusSubscriber(modid = MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
   public static class ClientModEvents {
 
+    /** Client setup event. */
     @SubscribeEvent
-    public static void onClientSetup(FMLClientSetupEvent event) {}
+    public static void onClientSetup(FMLClientSetupEvent event) {
+
+    }
   }
 }

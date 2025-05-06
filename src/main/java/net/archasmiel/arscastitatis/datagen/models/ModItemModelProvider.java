@@ -40,6 +40,12 @@ public class ModItemModelProvider extends ItemModelProvider {
     basicItem(ModBlocks.PLASTIC_DOOR.get().asItem());
   }
 
+  /**
+   * Creates an item model for the button block.
+   *
+   * @param block the block to create the model
+   * @param baseBlock the base block for texture
+   */
   public void buttonItem(DeferredHolder<Block, ? extends Block> block,
       DeferredHolder<Block, ? extends Block> baseBlock) {
     this.withExistingParent(block.getId().getPath(), mcLoc("block/button_inventory"))
@@ -47,6 +53,12 @@ public class ModItemModelProvider extends ItemModelProvider {
             "block/" + baseBlock.getId().getPath()));
   }
 
+  /**
+   * Creates an item model for the fence block.
+   *
+   * @param block the block to create the model
+   * @param baseBlock the base block for texture
+   */
   public void fenceItem(DeferredHolder<Block, ? extends Block> block,
       DeferredHolder<Block, ? extends Block> baseBlock) {
     this.withExistingParent(block.getId().getPath(), mcLoc("block/fence_inventory"))
@@ -54,6 +66,12 @@ public class ModItemModelProvider extends ItemModelProvider {
             "block/" + baseBlock.getId().getPath()));
   }
 
+  /**
+   * Creates an item model for the wall block.
+   *
+   * @param block the block to create the model for
+   * @param baseBlock the base block for texture
+   */
   public void wallItem(DeferredHolder<Block, ? extends Block> block,
       DeferredHolder<Block, ? extends Block> baseBlock) {
     this.withExistingParent(block.getId().getPath(), mcLoc("block/wall_inventory"))

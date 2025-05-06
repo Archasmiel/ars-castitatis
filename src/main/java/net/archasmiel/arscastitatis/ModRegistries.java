@@ -9,6 +9,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.registries.NewRegistryEvent;
 import net.neoforged.neoforge.registries.RegistryBuilder;
 
+/** Mod registries. */
 @EventBusSubscriber(modid = ArsCastitatisMod.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
 public class ModRegistries {
 
@@ -23,6 +24,7 @@ public class ModRegistries {
   public static Registry<Spell> SPELL_REGISTRY =
       new RegistryBuilder<>(SPELL_REGISTRY_KEY).defaultKey(SPELL_DEFAULT).create();
 
+  /** ArsCastitatis mod registries adding to register. */
   @SubscribeEvent
   public static void newRegistries(NewRegistryEvent event) {
     event.register(SPELL_REGISTRY);
