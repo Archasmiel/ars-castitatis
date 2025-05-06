@@ -1,8 +1,6 @@
 package net.archasmiel.arscastitatis.block;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.function.BiFunction;
@@ -13,6 +11,7 @@ import net.archasmiel.arscastitatis.block.custom.LedLampBlock;
 import net.archasmiel.arscastitatis.block.custom.RgbLampBlock;
 import net.archasmiel.arscastitatis.block.custom.TeleportBlock;
 import net.archasmiel.arscastitatis.block.custom.TransformationBlock;
+import net.archasmiel.arscastitatis.block.custom.WiringBayBlock;
 import net.archasmiel.arscastitatis.item.ModItems;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.BlockItem;
@@ -68,6 +67,7 @@ public class ModBlocks {
   public static final DeferredHolder<Block, TrapDoorBlock> PLASTIC_TRAPDOOR;
   public static final DeferredHolder<Block, LedLampBlock> LED_LAMP;
   public static final DeferredHolder<Block, RgbLampBlock> RGB_LAMP;
+  public static final DeferredHolder<Block, WiringBayBlock> WIRING_BAY;
 
   /**
    * Registers a block along with its corresponding block item in the mod registry.
@@ -249,6 +249,17 @@ public class ModBlocks {
                 .sound(SoundType.GLASS)
                 .requiresCorrectToolForDrops(),
             new Item.Properties());
+
+    WIRING_BAY =
+        registerBlock(
+            "wiring_bay",
+            WiringBayBlock::new,
+            BlockItem::new,
+            BlockBehaviour.Properties.of()
+                .strength(2f)
+                .sound(SoundType.METAL)
+                .requiresCorrectToolForDrops(),
+            new Item.Properties().stacksTo(1));
   }
 
   /**
@@ -276,6 +287,8 @@ public class ModBlocks {
 
     output.accept(ModBlocks.LED_LAMP.get());
     output.accept(ModBlocks.RGB_LAMP.get());
+
+    output.accept(ModBlocks.WIRING_BAY.get());
   }
 
   /**

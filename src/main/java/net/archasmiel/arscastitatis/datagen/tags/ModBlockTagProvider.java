@@ -1,5 +1,6 @@
 package net.archasmiel.arscastitatis.datagen.tags;
 
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import net.archasmiel.arscastitatis.ArsCastitatisMod;
 import net.archasmiel.arscastitatis.block.ModBlocks;
@@ -7,11 +8,13 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.IntrinsicHolderTagsProvider;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
+import net.neoforged.neoforge.registries.DeferredHolder;
 
 /**
  * Mod block tag provider.
@@ -35,58 +38,67 @@ public class ModBlockTagProvider extends BlockTagsProvider {
 
   @Override
   protected void addTags(HolderLookup.Provider provider) {
-    tag(BlockTags.MINEABLE_WITH_PICKAXE)
-        .replace(false)
-        .add(ModBlocks.REINFORCED_DIORITE.get())
-        .add(ModBlocks.PAPER_BLOCK.get())
-        .add(ModBlocks.MAGIC_BRICKS.get())
-        .add(ModBlocks.PLASTIC_BLOCK.get())
-        .add(ModBlocks.PLASTIC_STAIRS.get())
-        .add(ModBlocks.PLASTIC_SLAB.get())
-        .add(ModBlocks.PLASTIC_PRESSURE_PLATE.get())
-        .add(ModBlocks.PLASTIC_BUTTON.get())
-        .add(ModBlocks.PLASTIC_FENCE.get())
-        .add(ModBlocks.PLASTIC_FENCE_GATE.get())
-        .add(ModBlocks.PLASTIC_WALL.get())
-        .add(ModBlocks.PLASTIC_DOOR.get())
-        .add(ModBlocks.PLASTIC_TRAPDOOR.get())
-        .add(ModBlocks.LED_LAMP.get())
-        .add(ModBlocks.RGB_LAMP.get());
+    addToTag(
+        BlockTags.MINEABLE_WITH_PICKAXE,
+        List.of(
+            ModBlocks.REINFORCED_DIORITE,
+            ModBlocks.PAPER_BLOCK,
+            ModBlocks.MAGIC_BRICKS,
+            ModBlocks.PLASTIC_BLOCK,
+            ModBlocks.PLASTIC_STAIRS,
+            ModBlocks.PLASTIC_SLAB,
+            ModBlocks.PLASTIC_PRESSURE_PLATE,
+            ModBlocks.PLASTIC_BUTTON,
+            ModBlocks.PLASTIC_FENCE,
+            ModBlocks.PLASTIC_FENCE_GATE,
+            ModBlocks.PLASTIC_WALL,
+            ModBlocks.PLASTIC_DOOR,
+            ModBlocks.PLASTIC_TRAPDOOR,
+            ModBlocks.LED_LAMP,
+            ModBlocks.RGB_LAMP,
+            ModBlocks.WIRING_BAY));
 
-    tag(BlockTags.MINEABLE_WITH_AXE)
-        .replace(false)
-        .add(ModBlocks.PLASTIC_BLOCK.get())
-        .add(ModBlocks.PLASTIC_STAIRS.get())
-        .add(ModBlocks.PLASTIC_SLAB.get())
-        .add(ModBlocks.PLASTIC_PRESSURE_PLATE.get())
-        .add(ModBlocks.PLASTIC_BUTTON.get())
-        .add(ModBlocks.PLASTIC_FENCE.get())
-        .add(ModBlocks.PLASTIC_FENCE_GATE.get())
-        .add(ModBlocks.PLASTIC_WALL.get())
-        .add(ModBlocks.PLASTIC_DOOR.get())
-        .add(ModBlocks.PLASTIC_TRAPDOOR.get());
+    addToTag(
+        BlockTags.MINEABLE_WITH_AXE,
+        List.of(
+            ModBlocks.PLASTIC_BLOCK,
+            ModBlocks.PLASTIC_STAIRS,
+            ModBlocks.PLASTIC_SLAB,
+            ModBlocks.PLASTIC_PRESSURE_PLATE,
+            ModBlocks.PLASTIC_BUTTON,
+            ModBlocks.PLASTIC_FENCE,
+            ModBlocks.PLASTIC_FENCE_GATE,
+            ModBlocks.PLASTIC_WALL,
+            ModBlocks.PLASTIC_DOOR,
+            ModBlocks.PLASTIC_TRAPDOOR));
 
-    tag(BlockTags.NEEDS_DIAMOND_TOOL).replace(false).add(ModBlocks.REINFORCED_DIORITE.get());
+    addToTag(
+        BlockTags.NEEDS_DIAMOND_TOOL,
+        List.of(
+            ModBlocks.REINFORCED_DIORITE));
 
-    tag(BlockTags.NEEDS_IRON_TOOL)
-        .replace(false)
-        .add(ModBlocks.PAPER_BLOCK.get())
-        .add(ModBlocks.MAGIC_BRICKS.get());
+    addToTag(
+        BlockTags.NEEDS_IRON_TOOL,
+        List.of(
+            ModBlocks.PAPER_BLOCK,
+            ModBlocks.MAGIC_BRICKS,
+            ModBlocks.WIRING_BAY));
 
-    tag(BlockTags.NEEDS_STONE_TOOL)
-        .replace(false)
-        .add(ModBlocks.PLASTIC_BLOCK.get())
-        .add(ModBlocks.PLASTIC_STAIRS.get())
-        .add(ModBlocks.PLASTIC_SLAB.get())
-        .add(ModBlocks.PLASTIC_PRESSURE_PLATE.get())
-        .add(ModBlocks.PLASTIC_BUTTON.get())
-        .add(ModBlocks.PLASTIC_FENCE.get())
-        .add(ModBlocks.PLASTIC_FENCE_GATE.get())
-        .add(ModBlocks.PLASTIC_WALL.get())
-        .add(ModBlocks.PLASTIC_DOOR.get())
-        .add(ModBlocks.PLASTIC_TRAPDOOR.get())
-        .add(ModBlocks.LED_LAMP.get())
-        .add(ModBlocks.RGB_LAMP.get());
+    addToTag(
+        BlockTags.NEEDS_STONE_TOOL,
+        List.of(
+            ModBlocks.PLASTIC_BLOCK,
+            ModBlocks.PLASTIC_STAIRS,
+            ModBlocks.PLASTIC_SLAB,
+            ModBlocks.PLASTIC_PRESSURE_PLATE,
+            ModBlocks.PLASTIC_BUTTON,
+            ModBlocks.PLASTIC_FENCE,
+            ModBlocks.PLASTIC_FENCE_GATE,
+            ModBlocks.PLASTIC_WALL,
+            ModBlocks.PLASTIC_DOOR,
+            ModBlocks.PLASTIC_TRAPDOOR,
+            ModBlocks.LED_LAMP,
+            ModBlocks.RGB_LAMP));
 
     tag(BlockTags.STAIRS).add(ModBlocks.PLASTIC_STAIRS.get());
     tag(BlockTags.SLABS).add(ModBlocks.PLASTIC_SLAB.get());
@@ -97,5 +109,12 @@ public class ModBlockTagProvider extends BlockTagsProvider {
     tag(BlockTags.WALLS).add(ModBlocks.PLASTIC_WALL.get());
     tag(BlockTags.DOORS).add(ModBlocks.PLASTIC_DOOR.get());
     tag(BlockTags.TRAPDOORS).add(ModBlocks.PLASTIC_TRAPDOOR.get());
+  }
+
+  private void addToTag(TagKey<Block> tag, List<DeferredHolder<Block, ? extends Block>> holder) {
+    IntrinsicTagAppender<Block> appender = tag(tag).replace(false);
+    for (DeferredHolder<Block, ? extends Block> block : holder) {
+      appender.add(block.get());
+    }
   }
 }

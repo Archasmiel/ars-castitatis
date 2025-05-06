@@ -14,6 +14,7 @@
     "arscastitatis:plastic_door",
     "arscastitatis:plastic_trapdoor",
     "arscastitatis:led_lamp",
-    "arscastitatis:rgb_lamp"
+    "arscastitatis:rgb_lamp",
+    "arscastitatis:wiring_bay"
   ]
 }

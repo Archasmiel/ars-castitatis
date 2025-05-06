@@ -53,6 +53,8 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
 
     dropSelf(ModBlocks.LED_LAMP.get());
     dropSelf(ModBlocks.RGB_LAMP.get());
+
+    dropSelf(ModBlocks.WIRING_BAY.get());
   }
 
   /**

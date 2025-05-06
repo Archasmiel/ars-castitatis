@@ -26,5 +26,6 @@
   "block.arscastitatis.plastic_door": "Plastic Door",
   "block.arscastitatis.plastic_trapdoor": "Plastic Trapdoor",
   "block.arscastitatis.led_lamp": "LED Lamp",
-  "block.arscastitatis.rgb_lamp": "RGB Lamp"
+  "block.arscastitatis.rgb_lamp": "RGB Lamp",
+  "block.arscastitatis.wiring_bay": "Wiring Bay"
 }

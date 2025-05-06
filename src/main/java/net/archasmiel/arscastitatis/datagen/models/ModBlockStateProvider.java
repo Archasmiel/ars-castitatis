@@ -64,6 +64,8 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
     multiStateLamp(ModBlocks.LED_LAMP, LedLampBlock.STATE);
     multiStateLamp(ModBlocks.RGB_LAMP, RgbLampBlock.STATE);
+
+    blockItem(ModBlocks.WIRING_BAY);
   }
 
   private void blockWithItem(DeferredHolder<Block, ? extends Block> blockHolder) {
