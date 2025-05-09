@@ -6,6 +6,7 @@ import net.archasmiel.arscastitatis.component.ModDataComponents;
 import net.archasmiel.arscastitatis.effects.ModEffects;
 import net.archasmiel.arscastitatis.item.ModCreativeModTabs;
 import net.archasmiel.arscastitatis.item.ModItems;
+import net.archasmiel.arscastitatis.menu.ModMenus;
 import net.archasmiel.arscastitatis.spell.ModSpells;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.neoforged.api.distmarker.Dist;
@@ -38,6 +39,8 @@ public class ArsCastitatisMod {
 
     ModCreativeModTabs.register(modEventBus);
     ModEffects.register(modEventBus);
+    ModMenus.register(modEventBus);
+
     ModItems.register(modEventBus);
     ModBlocks.register(modEventBus);
     ModSpells.register(modEventBus);

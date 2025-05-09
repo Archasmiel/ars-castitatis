@@ -1,11 +1,14 @@
 package net.archasmiel.arscastitatis;
 
+import net.archasmiel.arscastitatis.menu.ModMenus;
+import net.archasmiel.arscastitatis.menu.screen.WiringBayScreen;
 import net.archasmiel.arscastitatis.spell.Spell;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import net.neoforged.neoforge.registries.NewRegistryEvent;
 import net.neoforged.neoforge.registries.RegistryBuilder;
 
@@ -24,9 +27,15 @@ public class ModRegistries {
   public static Registry<Spell> SPELL_REGISTRY =
       new RegistryBuilder<>(SPELL_REGISTRY_KEY).defaultKey(SPELL_DEFAULT).create();
 
-  /** ArsCastitatis mod registries adding to register. */
+  /** Event for adding new registries. */
   @SubscribeEvent
   public static void newRegistries(NewRegistryEvent event) {
     event.register(SPELL_REGISTRY);
+  }
+
+  /** Registering mod screens. */
+  @SubscribeEvent
+  public static void registerScreens(RegisterMenuScreensEvent event) {
+    event.register(ModMenus.WIRING_BAY.get(), WiringBayScreen::new);
   }
 }

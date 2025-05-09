@@ -1,6 +1,8 @@
 {
   "creative_tab.arscastitatis.main_tab": "Ars Castitatis",
 
+  "screen.arscastitatis.wiring_bay.title": "Wiring Bay",
+
   "tooltip.arscastitatis.board.show_tooltip1": "Hold Shift for more information",
   "tooltip.arscastitatis.board.show_tooltip2": "Hold Ctrl for last BlockPos",
   "tooltip.arscastitatis.board.last_click": "Last click at:",
